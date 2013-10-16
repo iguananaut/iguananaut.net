@@ -2,11 +2,13 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
+import os
+
 AUTHOR = u'Erik Bray'
 SITENAME = u'Iguananaut'
 SITEURL = ''
 
-TIMEZONE = 'Europe/Paris'
+TIMEZONE = 'US/East'
 
 DEFAULT_LANG = u'en'
 
@@ -14,6 +16,8 @@ DEFAULT_LANG = u'en'
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
+
+OUTPUT_PATH = os.path.join(os.pardir, 'output')
 
 # Blogroll
 LINKS =  (('Pelican', 'http://getpelican.com/'),
@@ -26,6 +30,3 @@ SOCIAL = (('You can add links in your config file', '#'),
           ('Another social link', '#'),)
 
 DEFAULT_PAGINATION = False
-
-# Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
