@@ -1,4 +1,4 @@
-[submodule "theme"]
-	path = theme
+[submodule "pelican-elegant"]
+	path = pelican-elegant
 	url = https://github.com/iguananaut/pelican-elegant.git
 	branch = iguananaut.net
