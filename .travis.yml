@@ -1,0 +1,28 @@
+notifications:
+  email:
+    - erik.m.bray@gmail.com
+
+  on_failure: always
+
+env:
+  global:
+    - secure: kCtyyWVy1yGjZKd9R7u4DtITzUUTfQ84Rx5EVbVRVAg1WPL5Hdi/0z/xxa1asmh3INuF11IV1Skf0zSvPxQpsPJNBwlq1KAI45apwakctB+v2PjUMA4sv4bE5CkhUjdmdP383/ZJK6QQkTfLhj+Zs5DICZBTJj4t+d0xh0KfqWA=
+
+language: python
+
+branches:
+  only:
+    - staging
+
+before_install:
+  - "pip install fabric"
+  - "pip install pelican"
+  - "git submodule init"
+  - "git submodule update"
+  - "pelican-themes --install pelican-elegant"
+
+install:
+  - "fab build"
+
+script:
+  - "fab travis_deploy"
