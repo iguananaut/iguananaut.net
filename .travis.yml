@@ -12,7 +12,7 @@ language: python
 
 branches:
   only:
-    - staging
+    - testing
 
 before_install:
   - "pip install fabric"
