@@ -60,6 +60,11 @@ def travis_deploy():
     local('git config user.email {git_email!r}'.format(**env))
     local('git checkout --orphan {gh_remote_branch}'.format(**env))
     local('git rm -rf .')
+    # Now add the output directory so that it won't be deleted, but
+    # then clean up any files left over from the build (pyc files mainly)
+    # TODO: Find a less round-about way of preparing the output branch
+    local('git add {deploy_path}'.format(**env))
+    local('git clean -dfx')
     local('mv {deploy_path}/* .'.format(**env))
     local('rmdir {deploy_path}'.format(**env))
     local('touch .nojekyll')
