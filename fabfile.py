@@ -11,7 +11,7 @@ env.siteurl = 'iguananaut.net'
 env.gh_account = 'iguananaut'
 env.gh_repository = 'iguananaut.github.io'
 env.gh_remote = 'live'
-env.gh_remote_branch = 'staging'
+env.gh_remote_branch = 'master'
 env.gh_token = os.environ.get('GH_TOKEN', '')
 
 env.git_name = 'Erik M. Bray'
