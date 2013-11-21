@@ -70,5 +70,5 @@ def travis_deploy():
     local('touch .nojekyll')
     local('git add .nojekyll')
     local('git add *')
-    local('git commit -m "Generated from sourcse"')
+    local('git commit -m "Generated from sources"')
     local('git push -f {gh_remote} {gh_remote_branch}'.format(**env))
