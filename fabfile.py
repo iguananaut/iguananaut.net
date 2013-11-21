@@ -65,7 +65,7 @@ def travis_deploy():
     # TODO: Find a less round-about way of preparing the output branch
     local('git add {deploy_path}'.format(**env))
     local('git clean -dfx')
-    local('mv {deploy_path}/* .'.format(**env))
+    local('git mv {deploy_path}/* .'.format(**env))
     local('rmdir {deploy_path}'.format(**env))
     local('touch .nojekyll')
     local('git add .nojekyll')
