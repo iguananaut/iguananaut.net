@@ -4,6 +4,7 @@ import os
 
 # Local path configuration (can be absolute or relative to fabfile)
 env.deploy_path = 'output'
+env.content_path = 'content'
 
 # Deployment
 env.gh_account = 'iguananaut'
@@ -23,6 +24,8 @@ def clean():
 
 
 def build():
+    if not os.path.exists(env.content_path):
+        local('mkdir {content_path}'.format(**env))
     local('pelican -s pelicanconf/production.py')
 
 
@@ -45,20 +48,22 @@ def reserve():
 
 
 def preview():
+    if not os.path.exists(env.content_path):
+        local('mkdir {content_path}'.format(**env))
     local('pelican -s pelicanconf/development.py')
 
 
 def travis_deploy():
     local('git remote add {gh_remote} '
-          'https://{gh_account}:{gh_token}@github.com/{gh_account}/{gh_repository}.git')
-    local('git config user.name {git_name}')
-    local('git config user.email {git_email}')
-    local('git checkout --orphan {gh_remote_branch}')
+          'https://{gh_account}:{gh_token}@github.com/{gh_account}/{gh_repository}.git'.format(**env))
+    local('git config user.name {git_name}'.format(**env))
+    local('git config user.email {git_email}'.format(**env))
+    local('git checkout --orphan {gh_remote_branch}'.format(**env))
     local('git rm -rf .')
-    local('mv {deploy_path}/* .')
-    local('rmdir {deploy_path}')
+    local('mv {deploy_path}/* .'.format(**env))
+    local('rmdir {deploy_path}'.format(**env))
     local('touch .nojekyll')
     local('git add .nojekyll')
     local('git add *')
     local('git commit -m "Generated from sourcse"')
-    local('git push -f {gh_remote} {gh_remote_branch}')
+    local('git push -f {gh_remote} {gh_remote_branch}'.format(**env))
