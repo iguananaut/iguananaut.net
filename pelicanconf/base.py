@@ -34,6 +34,10 @@ LANDING_PAGE_ABOUT = {
 SITE_LICENSE = codecs.open(join('templates', 'license.html'),
                            encoding='utf8').read()
 
+
+# Comments and other services
+DISQUS_SITENAME = 'iguananaut'
+
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
