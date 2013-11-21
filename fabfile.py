@@ -7,6 +7,7 @@ env.deploy_path = 'output'
 env.content_path = 'content'
 
 # Deployment
+env.siteurl = 'iguananaut.net'
 env.gh_account = 'iguananaut'
 env.gh_repository = 'iguananaut.github.io'
 env.gh_remote = 'live'
@@ -69,6 +70,9 @@ def travis_deploy():
     local('rmdir {deploy_path}'.format(**env))
     local('touch .nojekyll')
     local('git add .nojekyll')
+
+    # Add CNAME file for GitHub URL redirection
+    local('echo {siteurl!r} >> CNAME'.format(**env))
     local('git add *')
     local('git commit -m "Generated from sources"')
     local('git push -f {gh_remote} {gh_remote_branch}'.format(**env))
