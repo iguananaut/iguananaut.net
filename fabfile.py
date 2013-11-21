@@ -56,8 +56,8 @@ def preview():
 def travis_deploy():
     local('git remote add {gh_remote} '
           'https://{gh_account}:{gh_token}@github.com/{gh_account}/{gh_repository}.git'.format(**env))
-    local('git config user.name {git_name}'.format(**env))
-    local('git config user.email {git_email}'.format(**env))
+    local('git config user.name {git_name!r}'.format(**env))
+    local('git config user.email {git_email!r}'.format(**env))
     local('git checkout --orphan {gh_remote_branch}'.format(**env))
     local('git rm -rf .')
     local('mv {deploy_path}/* .'.format(**env))
