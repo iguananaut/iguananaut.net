@@ -59,7 +59,7 @@ def travis_deploy():
           'https://{gh_account}:{gh_token}@github.com/{gh_account}/{gh_repository}.git'.format(**env))
     local('git config user.name {git_name!r}'.format(**env))
     local('git config user.email {git_email!r}'.format(**env))
-    local('git checkout --orphan {gh_remote_branch}'.format(**env))
+    local('git checkout --orphan output')
     local('git rm -rf .')
     # Now add the output directory so that it won't be deleted, but
     # then clean up any files left over from the build (pyc files mainly)
@@ -75,4 +75,4 @@ def travis_deploy():
     local('echo {siteurl!r} >> CNAME'.format(**env))
     local('git add *')
     local('git commit -m "Generated from sources"')
-    local('git push -f {gh_remote} {gh_remote_branch}'.format(**env))
+    local('git push -f {gh_remote} output:{gh_remote_branch}'.format(**env))
