@@ -21,6 +21,9 @@ DEFAULT_LANG = 'en'
 PATH = join(os.pardir, 'content')
 OUTPUT_PATH = join(os.pardir, 'output')
 
+# URL Settings
+ARTICLE_URL = 'blog/{category}/{slug}.html'
+ARTICLE_SAVE_AS = ARTICLE_URL
 
 # Theme settings
 THEME = 'pelican-elegant'
