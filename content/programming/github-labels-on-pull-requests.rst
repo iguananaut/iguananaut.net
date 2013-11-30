@@ -1,7 +1,6 @@
 Adding Labels to GitHub Pull Requests
 =====================================
 
-:status: draft
 :author: Erik M. Bray
 :date: 2013-11-29
 :category: programming
