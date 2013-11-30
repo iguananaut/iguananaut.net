@@ -91,7 +91,7 @@ executed on pages from that site.
 
 Digging a little deeper, however, I found that Handlebars supports
 pre-compilation of templates into executable code that does not require runtime
-``eval()``s or anything of that nature.  It was easy enough, following the
+evals or anything of that nature.  It was easy enough, following the
 instructions, to install Handlebars with node.js and run their script to
 compile my template.  Then I just added the template to the GitHub repo for my
 script and listed it as a prerequisite, after Handlebars itself.  That cleared
