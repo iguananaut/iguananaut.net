@@ -32,7 +32,7 @@ Birthday" which I also feel could only have come from Korea.
 The second story, however, I found deeply moving in a legitimate "maeks u
 think" way.  Called, "The Heavenly Creature" it is about a robot that is sent
 to do menial labor at a Buddhist monastery.  A supposed "technical glitch"
-causes the robot to become "self-aware" and believes itself to be enlightened.
+causes the robot to become "self-aware" and believe itself to be enlightened.
 The lyrics to "The End of All You'll Know" can't not make me think of this
 story.  I don't want to give too much of it away by rambling about it all
 morning, but please, please go watch it.
