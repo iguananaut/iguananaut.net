@@ -35,7 +35,7 @@ LANDING_PAGE_ABOUT = {
                            encoding='utf8').read()
 }
 SITE_LICENSE = codecs.open(join('templates', 'license.html'),
-                           encoding='utf8').read()
+                           encoding='utf8').read().format(SITENAME=SITENAME)
 
 
 # Comments and other services
