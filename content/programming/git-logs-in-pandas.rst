@@ -9,7 +9,6 @@ Analyzing Git Repositories in Pandas
 :summary: Although the git log command is extremely powerful for use in
           exploring a git repository's history, I found it easier to for some
           kinds of analysis to dump git log output into a Pandas_ DataFrame_
-:status: draft
 
 Although the git log command is extremely powerful for use in exploring a git
 repository's history, I found that for some kinds of analysis it may be easier
@@ -21,7 +20,7 @@ page.  For a large project `like Astropy
 <https://github.com/astropy/astropy/graphs/contributors>`_ that looks something
 like this:
 
-.. image:: {filename}/git-logs-in-pandas/github-astropy-commits-graph.png
+.. image:: {filename}/images/git-logs-in-pandas/github-astropy-commits-graph.png
     :alt: Astropy commit activity over time
     :align: center
 
@@ -46,7 +45,7 @@ arguments that allow returning a sample of the log in a specific date range.
 But I needed a quick, easy way to generate a list of dates separated by one
 week.  I could have done this easily enough in pure Python using timedeltas,
 but since I already had Pandas installed my first attempt used its built-in
-``date_range`` function::
+``date_range`` function:
 
 .. code:: python
 
@@ -67,7 +66,7 @@ but I will leave that as an exercise.
 
 My full solution involved looping over the dates in my date range and making
 repeated calls to ``git log``, a process with really more overhead than
-necessary but it was fine for a first attempt::
+necessary but it was fine for a first attempt:
 
 .. code:: python
 
@@ -110,14 +109,130 @@ ommitted that version of the plotting code, but it came out with something
 like this (after taking a rather long time to make all those ``git log``
 calls):
 
-.. image:: {filename}/git-logs-in-pandas/first-attempt.png
+.. image:: {filename}/images/git-logs-in-pandas/first-attempt.png
     :alt: First attempt at a commit activity graph
     :align: center
 
 If you compare that to the version from GitHub you can see that while there
 are similar periods of activity and inactivity, the two plots look rather
 different.  In particular, my version has several large spikes that are
-absent from the GitHub version.  
+absent from the GitHub version.  At first I thought I might try sampling by
+day instead of week, but that only made the output even spikier, and all those
+``git log`` calls were taking inordinately long.
+
+After just a little further exploration of the GitHub graphs and comparison
+with my actual git log I realized the major difference:  GitHub's time series
+is using the "author date" of the commits rather than the "committer date" to
+produce its graph.  All git commits actually carry (at least) two dates.  As
+`this article <http://alexpeattie.com/blog/working-with-dates-in-git/>`_ by
+Alex Peattie explains, the "author is the person who originally wrote the work,
+whereas the committer is the person who last applied the work."  And further,
+``git log`` "uses commit dates when given a ``--since`` option."  So my time
+series was based on commit dates, rather than author dates.  That largely
+explains the big spikes--it turns out they largely correspond to activity just
+before making a release of Astropy, when many pull requests were being merged.
+When the PRs are merged their commits get a commit date same as when they are
+merged.
+
+In fact, in general, the git log for a large project with many contributors is
+very much *not* in chronological order of when the commits were first created.
+Rather, because of the way git log works, the commits it lists will generally
+be in topological order.  It starts by looking at your ``HEAD`` commit and then
+just walking back through its parents.  This has nothing to do with the actual
+chronological order in which the commits were written by their original
+authors.
+
+My first attempt at solving this problem was to use a ``git log`` command with
+a custom format string returning only the author dates (as well as the hashes
+though they aren't particularly needed)::
+
+    git log --no-merges --date=short --pretty='format:%ad %H'
+
+This displays the author dates fine, but they are still in topological order.
+When trying to use this with ``--since`` and ``--until`` the returned commits
+are still based in the commit dates and not somehow magically sorted and
+grouped by author date.  I realized at this point that there was no way I
+could rely git log to prepare the data in the way I wanted.  It makes much
+more sense at this point to use Pandas.
+
+In addition to making the code vastly simpler, it only required one call to
+``git log`` and was much faster.  You can use a custom format with ``git log``
+to produce any and all data you want from git in a tsv or csv format and
+load it directly into a Pandas DataFrame.  For example, in addition to the
+author date, I also wanted the author, and for the heck of it the hash:
+
+.. code:: python
+
+    import io
+    from pandas import read_csv
+
+    cmd = "git log --no-merges --date=short --pretty='format:%ad\t%H\t%aN'"
+    p = sp.Popen(shlex.split(cmd), stdout=sp.PIPE)
+    # p.wait() will likely just hang if the log is long enough because the
+    # stdout buffer will fill up
+    stdout, _ = p.communicate()
+
+    table = read_csv(io.StringIO(stdout.decode('utf-8')), sep='\t',
+                     names=['date', 'hash', 'author'], index_col=0,
+                     parse_dates=True).sort()
+
+The ``index_col=0`` and ``parse_dates=True`` indicate that the first column
+('date') should be treated as the index for the table, and that its values
+should be parsed as dates.  The ``.sort()`` call ensures that the returned
+table is sorted in ascending order by date.
+
+Now the commits are indexed by their author date, and for many applications
+that would be fine.  But I still wanted to try grouping by weekly periods
+for use in my plot instead.  There are probably many ways to do this, but the
+one I settled on was to convert to a DataFrame indexed by periods instead of
+dates:
+
+.. code:: python
+
+    table = table.to_period(freq='W')
+
+Then it was easy to generate counts of commits in each period using a simple
+combination of ``groupby`` and ``aggregate``:
+
+.. code:: python
+
+    commits_per_period = table.hash.groupby(level=0).aggregate(len)
+
+I specically chose to aggregate over the hash column.  I could have just as
+easily used author.  This gives me a table mapping periods to the number of
+commits in each period.  I'm not sure if this next step is necessary, but
+I could convert this to a list of datetimes and associate array of commit
+counts for use with matplotlib:
+
+.. code:: python
+
+    dates = [p.start_time.date() for p in commits_per_period.index]
+    ncommits = commits_per_period.values
+
+The result looks like this:
+
+.. image:: {filename}/images/git-logs-in-pandas/second-attempt.png
+    :alt: Second attempt at a commit activity graph
+    :align: center
+
+It still has a few sharper spikes and other small differences from the GitHub
+version, but I think is close enough now.  There could be small differences in
+how they're sampling the data, and additional smoothing that I'm not doing.
+It doesn't matter--this is still an accurate representation of the *actual*
+activity of developers working on the project.
+
+This is of course just scratching the surface.  With git commit histories
+loaded into Pandas there's no end to the interesting analysis that could be
+done.  For example, I later went on to add a plot of the number of committers
+to the project over time.  That's still pretty basic though, and as I am not
+a statistician I can only imagine the data one could pull out of a git repo in
+this way.
+
+The full code, along with the plotting code is here:
+https://gist.github.com/iguananaut/8248063 with thanks to
+`Olga Botvinnik <https://github.com/olgabot>`_ for providing prettier plots
+with prettyplotlib_.
 
 .. _Pandas: http://pandas.pydata.org/
 .. _DataFrame: http://pandas.pydata.org/pandas-docs/stable/dsintro.html#dataframe
+.. _prettyplotlib: http://olgabot.github.io/prettyplotlib/
