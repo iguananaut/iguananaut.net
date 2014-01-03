@@ -24,6 +24,7 @@ OUTPUT_PATH = join(os.pardir, 'output')
 # URL Settings
 ARTICLE_URL = 'blog/{category}/{slug}.html'
 ARTICLE_SAVE_AS = ARTICLE_URL
+STATIC_PATHS = ['images']
 
 # Theme settings
 THEME = 'pelican-elegant'
