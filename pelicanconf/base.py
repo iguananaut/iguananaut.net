@@ -12,7 +12,7 @@ SITESUBTITLE = 'Trying not to be too pretentious here'
 SITE_DESCRIPTION = 'Personal blog of Erik M. Bray'
 SITEURL = 'http://iguananaut.net'
 
-TIMEZONE = 'US/East'
+TIMEZONE = 'America/New_York'
 
 DEFAULT_LANG = 'en'
 
