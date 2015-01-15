@@ -1,7 +1,7 @@
 Readme
 ======
 
-This is the source for my blog, `iguananaut.net`_
+This is the source for my blog, `iguananaut.net <http://iguananaut.net>`_
 
 Build Status
 ============
