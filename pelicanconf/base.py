@@ -8,7 +8,8 @@ from os.path import join, abspath
 
 AUTHOR = 'Erik M. Bray'
 SITENAME = 'from iguananaut import braindump'
-SITESUBTITLE = 'Trying not to be too pretentious here'
+#SITESUBTITLE = 'Trying not to be too pretentious here'
+SITESUBTITLE = ''
 SITE_DESCRIPTION = 'Personal blog of Erik M. Bray'
 SITEURL = 'http://iguananaut.net'
 
