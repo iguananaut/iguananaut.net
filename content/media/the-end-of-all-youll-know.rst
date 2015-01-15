@@ -6,7 +6,7 @@ The End of All You'll Know
 :category: media
 :tags: tv, movies, music
 :slug: the-end-of-all-youll-know
-:summary: One of my favorite songs, "The End of All You'll Know"
+:summary: One of my favorite songs, "The End of All You'll Know" and musings on Doomsday Book
 
 
 This morning I'd like to share a relatively unknown song that is pretty much
