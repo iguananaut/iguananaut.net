@@ -19,7 +19,7 @@ a (single) assignee to an issue, a milestone, and any number of "labels".  Label
 and can act as a stand-in for other metadata (affected versions, affected components, etc.) with
 judicious use, and this is exacly what I *really* need for Astropy.  There may not be a specific
 "Affected Version" metadata field, but I can at least create labels like "affects-0.2.x", meaning that
-a particular bug accets the lastest 0.2.x release and should be included in the next bugfix release.
+a particular bug affects the lastest 0.2.x release and should be included in the next bugfix release.
 It's not pretty but at least it works.
 
 But where labels *really* fall over in GitHub is that they aren't shown on *pull requests*.  At least
