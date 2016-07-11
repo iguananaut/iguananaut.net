@@ -1,4 +1,4 @@
-[submodule "pelican-elegant"]
-	path = pelican-elegant
-	url = https://github.com/iguananaut/pelican-elegant.git
-	branch = iguananaut.net
+[submodule "pelican-clean-blog"]
+	path = pelican-clean-blog
+	url = https://github.com/embray/pelican-clean-blog.git
+    branch = iguananaut.net

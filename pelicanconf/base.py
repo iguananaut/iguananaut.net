@@ -8,12 +8,11 @@ from os.path import join, abspath
 
 AUTHOR = 'Erik M. Bray'
 SITENAME = 'from iguananaut import braindump'
-#SITESUBTITLE = 'Trying not to be too pretentious here'
-SITESUBTITLE = ''
+SITESUBTITLE = 'a little font for my brain'
 SITE_DESCRIPTION = 'Personal blog of Erik M. Bray'
 SITEURL = 'http://iguananaut.net'
 
-TIMEZONE = 'America/New_York'
+TIMEZONE = 'Europe/Paris'
 
 DEFAULT_LANG = 'en'
 
@@ -28,17 +27,17 @@ ARTICLE_SAVE_AS = ARTICLE_URL
 STATIC_PATHS = ['images']
 
 # Theme settings
-THEME = 'pelican-elegant'
-CUSTOM_CSS = True
-RECENT_ARTICLES_COUNT = 5
-LANDING_PAGE_ABOUT = {
-    'title': SITESUBTITLE,
-    'details': codecs.open(join('templates', 'about.html'),
-                           encoding='utf8').read()
-}
-SITE_LICENSE = codecs.open(join('templates', 'license.html'),
-                           encoding='utf8').read().format(SITENAME=SITENAME)
-
+THEME = 'pelican-clean-blog'
+SOCIAL = [
+    ('twitter', 'https://twitter.com/iguananaut'),
+    ('google-plus', 'https://plus.google.com/+ErikBray'),
+    ('github', 'https://github.com/embray'),
+    ('bitbucket', 'https://bitbucket.com/embray'),
+    ('envelope', 'mailto:erik.m.bray@gmail.com')
+]
+SHOW_SOCIAL_ON_INDEX_PAGE_HEADER = True
+EXTRA_TEMPLATES_PATHS = ['includes']
+FOOTER_INCLUDE = 'license.html'
 
 # Comments and other services
 DISQUS_SITENAME = 'iguananaut'
