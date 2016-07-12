@@ -23,23 +23,23 @@ a particular bug affects the lastest 0.2.x release and should be included in the
 It's not pretty but at least it works.
 
 But where labels *really* fall over in GitHub is that they aren't shown on *pull requests*.  At least
-not in the most obvious context--on the page for the pull request (PR) itself.  To clarify, GitHub's data
+not in the most obvious context—on the page for the pull request (PR) itself.  To clarify, GitHub's data
 model treats PRs more or less like a "subclass" of normal issues.  Every PR has an issue (with the same
 number) associated with it, along with some pull request-specific data such as what comparison to make the
-PR from, and its merge status.  So there's no reason PRs *can't* have labels--just add labels to the issue
+PR from, and its merge status.  So there's no reason PRs *can't* have labels—just add labels to the issue
 associated with a PR.  In fact, it's entirely possible to do this through GitHub's API, and I believe some
 command-line utilities such `Hub`_ might support this (though I haven't actually checked).  *In fact* you
-can even turn a normal issue into a pull request by attaching the right metadata to it--I use
+can even turn a normal issue into a pull request by attaching the right metadata to it—I use
 `this script <https://gist.github.com/eteq/1750715>`_ that `Erik Tollerud`_ hacked together to do this all
 the time.
 
-This use case--converting an issue to a PR--especially illustrates the problem.  Say you have an issue with
+This use case—converting an issue to a PR—especially illustrates the problem.  Say you have an issue with
 a bunch of labels attached to it, but then you use this script to attach some code to the issue.  Refresh
 the page and suddenly: No more labels.  Nothing to distinguish the PR except for what milestone it's assigned
 to.
 
 That doesn't mean the labels ever went away.  In fact, you *can* still view them on the full list of issues
-for the repository--the issue listing UI supports labels for normal issues and PRs alike.  It even supports
+for the repository—the issue listing UI supports labels for normal issues and PRs alike.  It even supports
 a batch editing mode which allows adding and removing issues from PRs.  So it's not like they never intended
 it to be possible.  They for some reason just haven't gotten around to adding it to the UI for individual
 issues.
@@ -47,7 +47,7 @@ issues.
 So anyways, TL;DR: I wrote `this Greasemonkey script <http://userscripts.org/scripts/show/185095>`_ to
 display and enable management of labels on pull requests.
 
-The most obvious place for this would be in the same place they appear on normal issues--the right sidebar 
+The most obvious place for this would be in the same place they appear on normal issues—the right sidebar 
 next to the PR description, under the merge status:
 
 .. image:: https://raw.github.com/iguananaut/userscripts/master/github/labels_on_pull_requests/images/screenshot4.png
@@ -83,7 +83,7 @@ This, however, motivated my introduction to the relatively new world of `Content
 It turns out that Handlebars' template parsing requires being able to perform an ``eval()``, which CSP disallows
 by default (GitHub would have to explicitly allow it in their CSP rules, and it's for the best that they
 don't).  That said, part of the point of Greasemonkey and userscripts in general is that as a user I have
-(supposedly) vetted the functionality of this script and have okay'd it to run on my system--in principle
+(supposedly) vetted the functionality of this script and have okay'd it to run on my system—in principle
 CSP should only protect me from malicious scripts of which I did not authorize the execution.  But current
 versions of Firefox, at least, remain overly aggressive in enforcing a site's CSP rules even for userscripts
 executed on pages from that site.

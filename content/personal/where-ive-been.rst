@@ -27,7 +27,7 @@ have had other better excuses as well.
 I spent most of my free time in the spring semester of 2014 working on an
 independent project for my master's degree that I named
 `PyQC <https://bitbucket.org/embray/pyqc>`_ (not to be confused with an ESO
-project apparently called pyQC--I'm pretty confident I had the name first
+project apparently called pyQC—I'm pretty confident I had the name first
 though). This started as a project for my Quantum Information class, but there
 were still many possibilities for further development once the class was over,
 hence the independent project. I worked on this a bit into the summer as well,

@@ -23,7 +23,7 @@ ago that is available on Netflix Instant called `Doomsday Book`_ (not related
 to the novel of the same title).  It's a sort of anthology of three shorts
 about different "Doomsday" scenarios.
 
-The first and the third stories I would classify as "cute" and "funny"--
+The first and the third stories I would classify as "cute" and "funny"—
 definitely worth watching though.  First is a uniquely Korean zombie
 apocalypse story called "A Brave New World", full of over the top gross-out
 humor.  The third is a truly bizarre alien apocalypse story called "Happy

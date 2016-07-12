@@ -9,8 +9,8 @@
 
 :strong:`Erik M. Bray`
 
-- M.S. Applied Physics--Johns Hopkins University
-- B.S. Computer Science, B.A. Japanese Language and Literature--Universityof Massachusetts, Amherst
+- M.S. Applied Physics—Johns Hopkins University
+- B.S. Computer Science, B.A. Japanese Language and Literature—Universityof Massachusetts, Amherst
 
 I am a software engineer mostly interested in open source science, and
 particularly the scientific Python community (though not limited to Python).

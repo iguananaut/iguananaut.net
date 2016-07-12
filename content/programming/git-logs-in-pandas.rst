@@ -129,7 +129,7 @@ Alex Peattie explains, the "author is the person who originally wrote the work,
 whereas the committer is the person who last applied the work."  And further,
 ``git log`` "uses commit dates when given a ``--since`` option."  So my time
 series was based on commit dates, rather than author dates.  That largely
-explains the big spikes--it turns out they largely correspond to activity just
+explains the big spikes—it turns out they largely correspond to activity just
 before making a release of Astropy, when many pull requests were being merged.
 When the PRs are merged their commits get a commit date same as when they are
 merged.
@@ -218,7 +218,7 @@ The result looks like this:
 It still has a few sharper spikes and other small differences from the GitHub
 version, but I think is close enough now.  There could be small differences in
 how they're sampling the data, and additional smoothing that I'm not doing.
-It doesn't matter--this is still an accurate representation of the *actual*
+It doesn't matter—this is still an accurate representation of the *actual*
 activity of developers working on the project.
 
 This is of course just scratching the surface.  With git commit histories
