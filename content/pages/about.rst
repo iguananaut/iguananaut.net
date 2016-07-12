@@ -2,6 +2,11 @@
 :slug: about
 :header_cover: images/about/about-bg.jpg
 
+.. figure:: images/about/myself.jpg
+    :align: right
+    :figwidth: 30%
+    :alt: selfie
+
 Erik M. Bray
 M.S. Applied Physics--Johns Hopkins University
 B.S. Computer Science, B.A. Japanese Language and Literature--Universityof Massachusetts, Amherst
