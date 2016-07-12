@@ -8,7 +8,7 @@ from os.path import join, abspath
 
 AUTHOR = 'Erik M. Bray'
 SITENAME = 'from iguananaut import braindump'
-SITESUBTITLE = 'a little font for my brain'
+SITESUBTITLE = 'a storm drain for my brain'
 SITE_DESCRIPTION = 'Personal blog of Erik M. Bray'
 SITEURL = 'http://iguananaut.net'
 
@@ -25,6 +25,10 @@ OUTPUT_PATH = join(os.pardir, 'output')
 ARTICLE_URL = 'blog/{category}/{slug}.html'
 ARTICLE_SAVE_AS = ARTICLE_URL
 STATIC_PATHS = ['images']
+
+# Pages
+PAGE_PATHS = [join(os.pardir, 'pages')]
+DISPLAY_PAGES_ON_MENU = True
 
 # Theme settings
 THEME = 'pelican-clean-blog'
