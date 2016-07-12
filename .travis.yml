@@ -1,25 +1,18 @@
 notifications:
   email:
-    - erik.m.bray@gmail.com
-
+  - erik.m.bray@gmail.com
   on_failure: always
-
 env:
   global:
-    - secure: kCtyyWVy1yGjZKd9R7u4DtITzUUTfQ84Rx5EVbVRVAg1WPL5Hdi/0z/xxa1asmh3INuF11IV1Skf0zSvPxQpsPJNBwlq1KAI45apwakctB+v2PjUMA4sv4bE5CkhUjdmdP383/ZJK6QQkTfLhj+Zs5DICZBTJj4t+d0xh0KfqWA=
-
+  - secure: KrKvWPYAa7oCep884oQIJJA8ul+cwAGo/z6kKosdIMgZTE2h47zNeeByYg82cfrH57nhwEItrN5g55kKyN8wizZluJT5aflMItvHFGGPkMi7dr9sUHfcSagTQfazES8ZSxuvo1wtAm3J8Rq9q8BPUTqw1QHjMrKYoVk4d0NJgBg=
 language: python
-
 branches:
   only:
-    - master
-
+  - master
 before_install:
-  - "pip install -r requirements.txt"
-  - "git submodule update --init"
-
+- pip install -r requirements.txt
+- git submodule update --init
 install:
-  - "fab build"
-
+- fab build
 script:
-  - "fab travis_deploy"
+- fab travis_deploy
