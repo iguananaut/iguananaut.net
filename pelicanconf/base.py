@@ -25,7 +25,7 @@ OUTPUT_PATH = join(os.pardir, 'output')
 ARTICLE_URL = 'blog/{category}/{slug}.html'
 ARTICLE_SAVE_AS = ARTICLE_URL
 STATIC_PATHS = [
-    'images',
+    join('static', 'images'),
     join('pages', 'images')
 ]
 
@@ -47,6 +47,7 @@ SOCIAL = [
 SHOW_SOCIAL_ON_INDEX_PAGE_HEADER = True
 EXTRA_TEMPLATES_PATHS = ['includes']
 FOOTER_INCLUDE = 'license.html'
+DISABLE_CUSTOM_THEME_JAVASCRIPT = True
 
 # Comments and other services
 DISQUS_SITENAME = 'iguananaut'

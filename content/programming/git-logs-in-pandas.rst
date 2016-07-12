@@ -20,7 +20,7 @@ page.  For a large project `like Astropy
 <https://github.com/astropy/astropy/graphs/contributors>`_ that looks something
 like this:
 
-.. image:: {filename}/images/git-logs-in-pandas/github-astropy-commits-graph.png
+.. image:: {filename}/static/images/git-logs-in-pandas/github-astropy-commits-graph.png
     :alt: Astropy commit activity over time
     :align: center
 
@@ -109,7 +109,7 @@ ommitted that version of the plotting code, but it came out with something
 like this (after taking a rather long time to make all those ``git log``
 calls):
 
-.. image:: {filename}/images/git-logs-in-pandas/first-attempt.png
+.. image:: {filename}/static/images/git-logs-in-pandas/first-attempt.png
     :alt: First attempt at a commit activity graph
     :align: center
 
@@ -211,7 +211,7 @@ counts for use with matplotlib:
 
 The result looks like this:
 
-.. image:: {filename}/images/git-logs-in-pandas/second-attempt.png
+.. image:: {filename}/static/images/git-logs-in-pandas/second-attempt.png
     :alt: Second attempt at a commit activity graph
     :align: center
 
