@@ -33,7 +33,7 @@ were still many possibilities for further development once the class was over,
 hence the independent project. I worked on this a bit into the summer as well,
 just on my own time. But since then it had languished, which I feel awful
 about. Though I did give a (last minute) lightning talk about it at the last
-SciPy: http://youtu.be/SMyto7WHiNs? t=18m45s (also check out Tracy Teal's
+SciPy: http://youtu.be/SMyto7WHiNs?t=18m45s (also check out Tracy Teal's
 announcement of `Data Carpentry <http://datacarpentry.org>`_ right before me in
 the same video). I think my talk was largely incomprehensible, but it did
 garner some interest. I had a number of people coming up to me later asking
