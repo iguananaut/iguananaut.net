@@ -35,6 +35,8 @@ THEME = 'pelican-clean-blog'
 SOCIAL = [
     ('twitter', 'https://twitter.com/iguananaut'),
     ('google-plus', 'https://plus.google.com/+ErikBray'),
+    ('linkedin', 'http://www.linkedin.com/pub/erik-bray/19/2a8/a22'),
+    ('stack-overflow', 'http://stackoverflow.com/users/982257/iguananaut'),
     ('github', 'https://github.com/embray'),
     ('bitbucket', 'https://bitbucket.com/embray'),
     ('envelope', 'mailto:erik.m.bray@gmail.com')
