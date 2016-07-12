@@ -1,6 +1,6 @@
 :title: About Me
 :slug: about
-:header_cover: /images/about-bg.jpg
+:header_cover: images/about/about-bg.jpg
 
 Erik M. Bray
 M.S. Applied Physics--Johns Hopkins University

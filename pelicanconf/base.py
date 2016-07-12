@@ -24,10 +24,13 @@ OUTPUT_PATH = join(os.pardir, 'output')
 # URL Settings
 ARTICLE_URL = 'blog/{category}/{slug}.html'
 ARTICLE_SAVE_AS = ARTICLE_URL
-STATIC_PATHS = ['images']
+STATIC_PATHS = [
+    'images',
+    join('pages', 'images')
+]
 
 # Pages
-PAGE_PATHS = [join(os.pardir, 'pages')]
+PAGE_PATHS = ['pages']
 DISPLAY_PAGES_ON_MENU = True
 
 # Theme settings
