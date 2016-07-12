@@ -7,7 +7,8 @@
     :figwidth: 30%
     :alt: selfie
 
-:strong:`Erik M. Bray`
+Erik M. Bray
+------------
 
 - M.S. Applied Physics—Johns Hopkins University
 - B.S. Computer Science, B.A. Japanese Language and Literature—Universityof Massachusetts, Amherst
@@ -32,6 +33,19 @@ free time I like bullshitting the cats, learning languages, theoretical
 physics, and playing `Ingress`_ (ENL). In the past I've also lived in Japan
 and Mexico, and have basic competence in Japanese and Spanish (French I'm
 still working on).
+
+Publications
+------------
+
+* P. Greenfield, M. Droettboom, E.M. Bray
+  `ASDF: A new data format for astronomy <http://www.sciencedirect.com/science/article/pii/S2213133715000645>`_
+  Astron. Comp., 12 (2015), pp. 240–251
+* B. Thomas, et al.
+  `Learning from FITS: Limitations in use in modern astronomical research <http://www.sciencedirect.com/science/article/pii/S2213133715000104>`_
+  Astron. Comput. (2015) http://dx.doi.org/10.1016/j.ascom.2015.01.009 arXiv:1502.00996v2
+* Astropy Collaboration
+  `Astropy: A community python package for astronomy <http://www.aanda.org/articles/aa/abs/2013/10/aa22068-13/aa22068-13.html>`_
+  Astron. Astrophys., 558 (2013), p. A33 http://dx.doi.org/10.1051/0004-6361/201322068 arXiv:1307.6212
 
 .. important::
 
