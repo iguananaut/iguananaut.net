@@ -1,0 +1,101 @@
+/* Styles for restructuredText admonitions */
+div.note, div.important, div.warning {
+  background-color: #fbfbfb;
+  padding: 1px 40px 1px 37px;
+  border-left: 3px solid;
+  margin-bottom: 10px;
+}
+
+div.note, div.important, div.warning > p.admonition-title {
+  font-weight: bold;
+  font-size: 12px;
+  text-transform: uppercase;
+  margin-bottom: 0px;
+}
+
+div.note, div.important, div.warning > p {
+  font-size: 12px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+div.note {
+  border-left-color: #9b59b6;
+}
+div.note > p.admonition-title {
+  color: #9b59b6;
+}
+div.important {
+  border-left-color: #c0392b;
+}
+div.important > p.admonition-title {
+  color: #c0392b;
+}
+div.warning {
+  border-left-color: #e67e22;
+}
+div.warning > p.admonition-title {
+  color: #e67e22;
+}
+
+/* Styles for code */
+pre.code {
+    border: 1px solid #bbb;
+    padding: 4px;
+    margin: 1em 1em 1em 0;
+    box-shadow: 4px 4px 4px 0px rgba(128, 128, 128, 0.5);
+}
+
+/* Styles for Figures & Images */
+
+img {
+    border: 1px solid #bbb;
+    border-radius: 3px;
+    padding: 4px;
+    margin: 1em 1em 1em 0;
+    box-shadow: 4px 4px 4px 0px rgba(128, 128, 128, 0.5);
+}
+img.align-right {
+    float: right;
+    margin: 1em 0 1em 1em;
+}
+
+.figure {
+    border: 1px solid #bbb;
+    border-radius: 3px;
+    padding: 4px;
+    float: left;
+    margin: 0 1em 1em 0;
+    box-shadow: 4px 4px 4px 0px rgba(128, 128, 128, 0.5);
+}
+.figure.align-right {
+    float: right;
+    margin: 0 0 1em 1em;
+}
+.figure.align-left {
+    float: left;
+}
+.figure img {
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+
+    float: left;
+}
+.figure p.caption {
+    margin: 0;
+    font-size: 80%;
+    padding: 4px;
+    float: left;
+    text-align: left;
+}
+.figure div.legend {
+    padding: 4px;
+    font-size: 80%;
+    color: #aaa;
+    font-style: italic;
+
+    float: left;
+}

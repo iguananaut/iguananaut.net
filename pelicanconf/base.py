@@ -25,6 +25,7 @@ OUTPUT_PATH = join(os.pardir, 'output')
 ARTICLE_URL = 'blog/{category}/{slug}.html'
 ARTICLE_SAVE_AS = ARTICLE_URL
 STATIC_PATHS = [
+    join('static', 'css'),
     join('static', 'images'),
     join('pages', 'images')
 ]
@@ -45,6 +46,7 @@ SOCIAL = [
     ('envelope', 'mailto:erik.m.bray@gmail.com')
 ]
 SHOW_SOCIAL_ON_INDEX_PAGE_HEADER = True
+CSS_OVERRIDE = join('static', 'css', 'iguananaut.css')
 EXTRA_TEMPLATES_PATHS = ['includes']
 FOOTER_INCLUDE = 'license.html'
 DISABLE_CUSTOM_THEME_JAVASCRIPT = True
