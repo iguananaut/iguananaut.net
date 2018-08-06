@@ -36,9 +36,6 @@ the external data in the initializer of some static struct, as in this
     #include <stdio.h>
     #include "ext_lib.h"
 
-    #include <stdio.h>
-    #include "ext_lib.h"
-
 
     static mystruct bar = {
         &foo,
@@ -278,7 +275,7 @@ Indeed, the original problem does have to do with the
 compile just fine on Windows too, with the expectation that "foo" will be
 resolved at link time.
 
-But what if "foo" isn't resolved at link time?  On Linux this is technially
+But what if "foo" isn't resolved at link time?  On Linux this is technically
 no always a problem, though for programs all symbols do require to be
 resolved at link time so we pass ``-lext_lib`` to ``gcc``.  However, now
 ``foo`` comes from a shared library, whose runtime address *cannot* be known
@@ -387,7 +384,7 @@ Looking at the assembly with ``objdump -dzr main.o`` shows::
       4f:   5d                      pop    %rbp
       50:   c3                      retq
 
-The important bit is the instruction at by ``0x19``.  Here we can see
+The important bit is the instruction at offset ``0x19``.  Here we can see
 there's an IP-relative (as this is 64-bit Windows) load from some address
 for which we have a relocation for the symbol ``__imp_foo`` (*not* just
 ``foo``).  We can see that ``bar``, now being uninitialized, is in ``.bss``
@@ -396,14 +393,12 @@ instead of ``.data``, but ``__imp_foo`` is somewhere else--but where?
 Well we already said, ``__imp_foo`` is actually a reference to the IAT,
 which lives in a different segment.  Again, we can see this especially
 easily at runtime.  In noticed while playing around with this that there are
-special symbols named ``__IAT_start_`` and ``__IAT_end_`` specifying exactly
-where the IAT is in memory, and sure enough we can see that's where
+special symbols named ``__IAT_start__`` and ``__IAT_end__`` specifying
+exactly where the IAT is in memory, and sure enough we can see that's where
 ``__imp_foo`` is::
 
     (gdb) info addr __imp_foo
     Symbol "__imp_foo" is at 0x100408170 in a file compiled without debugging.
-    (gdb) info addr __IAT_start_
-    No symbol "__IAT_start_" in current context.
     (gdb) info addr __IAT_start__
     Symbol "__IAT_start__" is at 0x1004080e8 in a file compiled without debugging.
     (gdb) info addr __IAT_end__
@@ -472,15 +467,16 @@ did on Linux when ``foo`` was a mere ``int``)::
 No reference here to ``__imp_foo``.
 
 At risk of vastly oversimplifying, for historical (?) reasons Windows
-binaries contain symbol for all the function used in that particular binary,
-even if they are imported from an external DLL.  Normally, when we link an
-executable that uses code from a DLL, we pass the linker an "import library"
-which contains stub definitions for all the functions in the related DLL.
-The stub function, which is included in the executable, contains just a
-``jmp`` to ``__imp_foo``.  And in fact, when we declare a function with
-``__declspec(dllimport)``, this allows the compiler to bypass generating
-code like ``call foo``, and go straight to ``call __imp_foo``, bypassing the
-stub function altogether.  But the stub function nevertheless still exists.
+binaries contain symbols for all the function used in that particular
+binary, even if they are imported from an external DLL.  Normally, when we
+link an executable that uses code from a DLL, we pass the linker an "import
+library" which contains stub definitions for all the functions in the
+related DLL.  The stub function, which is included in the executable,
+contains just a ``jmp`` to ``__imp_foo``.  And in fact, when we declare a
+function with ``__declspec(dllimport)``, this allows the compiler to bypass
+generating code like ``call foo``, and go straight to ``call __imp_foo``,
+bypassing the stub function altogether.  But the stub function nevertheless
+still exists.
 
 In fact, we can see in the linked executable exactly what winds up in the
 ``.data`` section::
