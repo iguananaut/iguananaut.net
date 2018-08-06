@@ -392,7 +392,7 @@ instead of ``.data``, but ``__imp_foo`` is somewhere else--but where?
 
 Well we already said, ``__imp_foo`` is actually a reference to the IAT,
 which lives in a different segment.  Again, we can see this especially
-easily at runtime.  In noticed while playing around with this that there are
+easily at runtime.  I noticed while playing around with this that there are
 special symbols named ``__IAT_start__`` and ``__IAT_end__`` specifying
 exactly where the IAT is in memory, and sure enough we can see that's where
 ``__imp_foo`` is::
