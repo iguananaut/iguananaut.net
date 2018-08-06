@@ -192,12 +192,14 @@ address of ``foo``, and so on.
 
 Of course, that is the most naïve point of view--things more complicated
 when we consider linking multiple object files, or runtime relocations due
-to the fact that are code is not necessarily loaded at a fixed virtual
+to the fact that our code is not necessarily loaded at a fixed virtual
 memory address.  Nevertheless, the compiler has some intelligence as to what
 will happen.  In fact, it will leave the exact value of ``bar.a`` empty for
 now, and include a relocation entry for the linker to fill in later, as it
 may combine one or more TUs and their respective ``.data``, ``.text``, and
-other sections and things will get moved around.
+other sections and things will get moved around.  This is an implementation
+detail at the level of binary object files, with which the C standard is
+mostly unconcerned.
 
 Link-time relocations can be quite sophisticated, and can put almost
 anything almost anywhere in the file.  We can easily relocate data in the
