@@ -278,7 +278,7 @@ compile just fine on Windows too, with the expectation that "foo" will be
 resolved at link time.
 
 But what if "foo" isn't resolved at link time?  On Linux this is technically
-no always a problem, though for programs all symbols do require to be
+not always a problem, though for programs all symbols do require to be
 resolved at link time so we pass ``-lext_lib`` to ``gcc``.  However, now
 ``foo`` comes from a shared library, whose runtime address *cannot* be known
 ahead of time by the executable.  So we still need some way of resolving the
