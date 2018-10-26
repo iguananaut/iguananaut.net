@@ -5,7 +5,7 @@ Fabric==1.11.1
 feedgenerator==1.8
 Jinja2==2.8
 MarkupSafe==0.23
-paramiko==1.17.1
+paramiko~=2.0.9
 pelican==3.6.3
 git+https://github.com/dlitz/pycrypto.git@v2.7a1#egg=pycrypto
 Pygments==2.1.3
