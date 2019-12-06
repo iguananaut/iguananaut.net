@@ -7,8 +7,8 @@
     :figwidth: 30%
     :alt: selfie
 
-Erik M. Bray
-------------
+Erik Madison Bray
+-----------------
 
 - M.S. Applied Physics—Johns Hopkins University
 - B.S. Computer Science, B.A. Japanese Language and Literature—Universityof Massachusetts, Amherst
