@@ -5,7 +5,7 @@ notifications:
   on_failure: always
 env:
   global:
-  - secure: Huq0ZXjcudOlm10uKg9RMzj78aEzf21fESna0JdGVP7w2nqBgc9akk6nTBFWjV+3oRjeG/vmD5Vh9/i2Ms7q6WRvXEI7hPgkSlgmGwqSerZdbI6pvBf/0l+FESEj50GiX/Q9PacxMnsk+XzN7eMrj00PqqIgn0ZHsmF3dVfzmjg=
+  - secure: "eDCQpY+w6gCh+wIxzNWBwMkG+cW4S4wDOMQmfhyqhffIOWtt9oYZW8lyjoq+jbA6aA/QF13ykgVfdfAmvf9CGCwTlOtse/bC4ErCc25xFF4aYxH6OjXeiTgJKbUlzlONJflLQWP9vYP4tAmOieeDEAV7CXEtYKinohQ4U3ziYRA="
 language: python
 branches:
   only:
