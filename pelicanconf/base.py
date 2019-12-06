@@ -10,7 +10,7 @@ AUTHOR = 'E. Madison Bray'
 SITENAME = 'from iguananaut import braindump'
 SITESUBTITLE = 'a storm drain for my brain'
 SITE_DESCRIPTION = 'Personal blog of E. Madison Bray'
-SITEURL = 'http://iguananaut.net'
+SITEURL = 'https://iguananaut.net'
 
 TIMEZONE = 'Europe/Paris'
 
