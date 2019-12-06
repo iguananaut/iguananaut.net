@@ -14,6 +14,6 @@ before_install:
 - pip install -r requirements.txt
 - git submodule update --init
 install:
-- fab build
+- invoke build
 script:
-- fab travis_deploy
+- invoke travis_deploy
