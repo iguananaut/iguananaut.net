@@ -16,4 +16,4 @@ before_install:
 install:
 - invoke build
 script:
-- invoke travis_deploy
+- invoke travis-deploy
