@@ -1,78 +1,85 @@
-from fabric.api import *
-import fabric.contrib.project as project
+from invoke import task
 import os
 
 # Local path configuration (can be absolute or relative to fabfile)
-env.deploy_path = 'output'
-env.content_path = 'content'
+deploy_path = 'output'
+content_path = 'content'
 
 # Deployment
-env.siteurl = 'iguananaut.net'
-env.gh_account = 'iguananaut'
-env.gh_repository = 'iguananaut.github.io'
-env.gh_remote = 'live'
-env.gh_remote_branch = 'master'
-env.gh_token = os.environ.get('GH_TOKEN', '')
+siteurl = 'iguananaut.net'
+gh_account = 'iguananaut'
+gh_repository = 'iguananaut.github.io'
+gh_remote = 'live'
+gh_remote_branch = 'master'
+gh_token = os.environ.get('GH_TOKEN', '')
 
-env.git_name = 'Erik M. Bray'
-env.git_email = 'erik.m.bray+iguananaut@gmail.com'
-
-
-def clean():
-    if os.path.isdir(env.deploy_path):
-        local('rm -rf {deploy_path}'.format(**env))
-        local('mkdir {deploy_path}'.format(**env))
+git_name = 'Erik M. Bray'
+git_email = 'erik.m.bray+iguananaut@gmail.com'
 
 
-def build():
-    if not os.path.exists(env.content_path):
-        local('mkdir {content_path}'.format(**env))
-    local('pelican -s pelicanconf/production.py')
+@task
+def clean(c):
+    if os.path.isdir(deploy_path):
+        c.run(f'rm -rf {deploy_path}')
+        c.run(f'mkdir {deploy_path}')
 
 
-def rebuild():
+@task
+def build(c):
+    if not os.path.exists(content_path):
+        c.run(f'mkdir {content_path}')
+    c.run('pelican -s pelicanconf/production.py')
+
+
+@task
+def rebuild(c):
     clean()
     build()
 
 
-def regenerate():
-    local('pelican -r -s pelicanconf/production.py')
+@task
+def regenerate(c):
+    c.run('pelican -r -s pelicanconf/production.py')
 
 
-def serve():
-    local('cd {deploy_path} && python -m SimpleHTTPServer'.format(**env))
+@task
+def serve(c, port=8000):
+    c.run(f'cd {deploy_path} && python -m http.server {port}', pty=True)
 
 
-def reserve():
-    build()
-    serve()
+@task
+def reserve(c):
+    build(c)
+    serve(c)
 
 
-def preview():
-    if not os.path.exists(env.content_path):
-        local('mkdir {content_path}'.format(**env))
-    local('pelican -s pelicanconf/development.py')
+@task
+def preview(c):
+    if not os.path.exists(content_path):
+        c.run(f'mkdir {content_path}')
+    c.run('pelican -s pelicanconf/development.py')
 
 
-def travis_deploy():
-    local('git remote add {gh_remote} '
-          'https://{gh_account}:{gh_token}@github.com/{gh_account}/{gh_repository}.git'.format(**env))
-    local('git config user.name {git_name!r}'.format(**env))
-    local('git config user.email {git_email!r}'.format(**env))
-    local('git checkout --orphan output')
-    local('git rm -rf .')
+@task
+def travis_deploy(c):
+    c.run('git remote add {gh_remote} '
+          f'https://{gh_account}:{gh_token}@github.com/{gh_account}/{gh_repository}.git')
+    c.run(f'git config user.name {git_name!r}')
+    c.run(f'git config user.email {git_email!r}')
+    c.run('git checkout --orphan output')
+    c.run('git rm -rf .')
     # Now add the output directory so that it won't be deleted, but
     # then clean up any files left over from the build (pyc files mainly)
     # TODO: Find a less round-about way of preparing the output branch
-    local('git add {deploy_path}'.format(**env))
-    local('git clean -dfx')
-    local('git mv {deploy_path}/* .'.format(**env))
-    local('rmdir {deploy_path}'.format(**env))
-    local('touch .nojekyll')
-    local('git add .nojekyll')
+    c.run(f'git add {deploy_path}')
+    c.run('git clean -dfx')
+    c.run(f'git mv {deploy_path}/* .')
+    c.run(f'rmdir {deploy_path}')
+    c.run('touch .nojekyll')
+    c.run('git add .nojekyll')
 
     # Add CNAME file for GitHub URL redirection
-    local('echo {siteurl!r} >> CNAME'.format(**env))
-    local('git add *')
-    local('git commit -m "Generated from sources"')
-    local('git push -f {gh_remote} output:{gh_remote_branch}'.format(**env))
+    c.run(f'echo {siteurl!r} >> CNAME')
+    c.run('git add *')
+    c.run('git commit -m "Generated from sources"')
+    c.run(f'git push -f {gh_remote} output:{gh_remote_branch}')
