@@ -62,7 +62,7 @@ def preview(c):
 
 @task
 def travis_deploy(c):
-    c.run('git remote add {gh_remote} '
+    c.run(f'git remote add {gh_remote} '
           f'https://{gh_account}:{gh_token}@github.com/{gh_account}/{gh_repository}.git')
     c.run(f'git config user.name {git_name!r}')
     c.run(f'git config user.email {git_email!r}')
