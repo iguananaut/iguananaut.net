@@ -6,10 +6,10 @@ import codecs
 import os
 from os.path import join, abspath
 
-AUTHOR = 'Erik M. Bray'
+AUTHOR = 'E. Madison Bray'
 SITENAME = 'from iguananaut import braindump'
 SITESUBTITLE = 'a storm drain for my brain'
-SITE_DESCRIPTION = 'Personal blog of Erik M. Bray'
+SITE_DESCRIPTION = 'Personal blog of E. Madison Bray'
 SITEURL = 'http://iguananaut.net'
 
 TIMEZONE = 'Europe/Paris'
@@ -38,7 +38,6 @@ DISPLAY_PAGES_ON_MENU = True
 THEME = 'pelican-clean-blog'
 SOCIAL = [
     ('twitter', 'https://twitter.com/iguananaut'),
-    ('google-plus', 'https://plus.google.com/+ErikBray'),
     ('linkedin', 'http://www.linkedin.com/pub/erik-bray/19/2a8/a22'),
     ('stack-overflow', 'http://stackoverflow.com/users/982257/iguananaut'),
     ('github', 'https://github.com/embray'),

@@ -28,11 +28,13 @@ students from accross disciplines learn software development skills.
 
 Prior to that I did some hacking for shady three-letter agencies.
 
-I live in Orsay, France with my wife `Céline`_ and our three cats.  In my
-free time I like bullshitting the cats, learning languages, theoretical
+I live in Orsay, France with my wife `Céline`_ and our two cats.  In my
+free time I like playing with the cats, learning languages, theoretical
 physics, and playing `Ingress`_ (ENL). In the past I've also lived in Japan
 and Mexico, and have basic competence in Japanese and Spanish (French I'm
-still working on).
+still working on).  My first name is Erik, but since I have come out as
+non-binary and transfemme I use my middle name Madison more often, but in
+the wild you will encounter both. Pronouns: they/them.
 
 Publications
 ------------
