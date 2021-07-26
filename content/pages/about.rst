@@ -28,13 +28,13 @@ students from accross disciplines learn software development skills.
 
 Prior to that I did some hacking for shady three-letter agencies.
 
-I live in Orsay, France with my wife `Céline`_ and our two cats.  In my
-free time I like playing with the cats, learning languages, theoretical
-physics, and playing `Ingress`_ (ENL). In the past I've also lived in Japan
-and Mexico, and have basic competence in Japanese and Spanish (French I'm
-still working on).  My first name is Erik, but since I have come out as
-non-binary and transfemme I use my middle name Madison more often, but in
-the wild you will encounter both. Pronouns: they/them.
+I live in Orsay, France with my partner Irina and our two cats.  In my free
+time I like playing with the cats, playing Beat Saber, trying to learn
+French, and working to obtain my private pilot's license. In the past I've
+also lived in Japan and Mexico, and have basic competence in Japanese and
+Spanish (French I'm still working on).  My first name is Erik, but since I
+have come out as non-binary and transfemme I use my middle name Madison more
+often, but in the wild you will encounter both. Pronouns: they/them.
 
 Publications
 ------------
@@ -62,5 +62,3 @@ Publications
 .. _James Webb Space Telescope: http://webbtelescope.org/webb_telescope/
 .. _Astropy: http://www.astropy.org/
 .. _Software Carpentry: http://software-carpentry.org/
-.. _Ingress: https://www.ingress.com/
-.. _Céline: http://celineloup.com
